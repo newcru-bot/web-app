@@ -1,0 +1,8 @@
+ssh_options[:port] = 9210
+ssh_options[:user] = 'newcru' # the deploy user
+ssh_options[:keys] = %w(/newcru_deploy_private_key) # wherever you keep the deploy key
+
+task :deploy, :hosts => "thenewcru.com" do
+  run "cd /var/www/thenewcru.com; git pull; chmod -R g+w *"
+end
+
